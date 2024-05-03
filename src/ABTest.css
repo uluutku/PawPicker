@@ -1,0 +1,21 @@
+/* ABTest.css */
+
+/* ABTest container */
+.abtest-container {
+    margin-top: 40px;
+}
+
+/* ABTest title */
+.abtest-title {
+    margin-bottom: 20px;
+}
+
+/* Select button */
+.select-btn {
+    margin-top: 20px;
+}
+
+/* Finish button */
+.finish-btn {
+    margin-top: 20px;
+}
