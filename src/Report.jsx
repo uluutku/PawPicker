@@ -3,7 +3,6 @@ import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHe
 import './Report.css';
 
 
-
 export default function Report({ imageData }) {
     // Compute win/loss ratios and sort images based on this ratio
     imageData.forEach(img => {
@@ -28,29 +27,29 @@ export default function Report({ imageData }) {
         <Paper className="report-container">
             <Typography variant="h4" className="report-title">Detailed Analysis Report</Typography>
             {winner && (
-                <Box className="winner-section" style={{ border: '3px solid gold', margin: '20px', padding: '10px' }}>
+                <Box className="winner-section" style={{ marginBottom: "50px" }}>
                     <Typography variant="h6">Winner</Typography>
-                    <img src={winner.url} alt="Winner" style={{ width: '100%', maxWidth: '500px', borderRadius: '10px' }} />
-                    <Typography>{`Wins: ${winner.wins}, Losses: ${winner.losses}, Ratio: ${winner.ratio.toFixed(2)}`}</Typography>
+                    <img src={winner.url} alt="Winner" style={{ width: '100%', maxWidth: '700px', borderRadius: '8px' , border: '6px solid gold', margin: '20px'  }} />
+                    <Typography><b>{`Wins: ${winner.wins}, Losses: ${winner.losses}, Ratio: ${winner.ratio.toFixed(2)}`}</b></Typography>
                 </Box>
             )}
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Image</TableCell>
-                            <TableCell>Wins</TableCell>
-                            <TableCell>Losses</TableCell>
-                            <TableCell>Win/Loss Ratio</TableCell>
-                            <TableCell>Health</TableCell>
-                        <TableCell>Avg. Decision Time (ms)</TableCell>
+                            <TableCell><b>Image</b></TableCell>
+                            <TableCell><b>Wins</b></TableCell>
+                            <TableCell><b>Losses</b></TableCell>
+                            <TableCell><b>Win/Loss Ratio</b></TableCell>
+                            <TableCell><b>Health</b></TableCell>
+                            <TableCell><b>Avg. Decision Time (ms)</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {sortedData.map((item, index) => (
                             <TableRow key={index}>
                                 <TableCell>
-                                    <img src={item.url} alt={`Uploaded ${index}`} style={{ width: 50, height: 50, objectFit: 'cover' }} />
+                                    <img src={item.url} alt={`Uploaded ${index}`} style={{ width: 150, height: 150, objectFit: 'cover' }} />
                                 </TableCell>
                                 <TableCell>{item.wins}</TableCell>
                                 <TableCell>{item.losses}</TableCell>

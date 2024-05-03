@@ -75,17 +75,12 @@
     padding: 20px;
     margin: auto;
     max-width: 960px;
-    background: white;
+    background: rgb(173, 135, 135);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .winner-section {
-    animation: pulse 2s infinite;
-    background: linear-gradient(to right, #fffbd5, #b20a2c);
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
