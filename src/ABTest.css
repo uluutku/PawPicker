@@ -1,33 +1,94 @@
 /* ABTest.css */
 
+/* Best Practices */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .abtest-container {
-    margin-top: 20px;
-  }
-  
-  .abtest-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .image-grid {
-    margin-bottom: 20px;
-  }
-  
-  .abtest-image {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-  }
-  
-  .select-btn {
-    margin-top: 10px;
-  }
-  
-  .start-btn {
-    margin-top: 10px;
-  }
-  
-  .finish-btn {
-    margin-top: 20px;
-  }
-  
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.abtest-title {
+  margin-bottom: 20px;
+}
+
+.image-grid {
+  margin-bottom: 20px;
+}
+
+.abtest-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Modern animation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Modern shadow */
+}
+
+.abtest-image:hover {
+  transform: scale(1.05); /* Modern animation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Modern shadow */
+}
+
+.abtest-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease; /* Modern animation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Modern shadow */
+}
+
+.abtest-container button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Modern shadow */
+}
+
+/* Best UI/UX Principles */
+.abtest-container {
+  font-family: 'Inter', sans-serif; /* Modern font */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.abtest-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.abtest-container {
+  padding: 30px;
+}
+
+.abtest-container button {
+  font-weight: bold;
+}
+
+.abtest-container {
+  color: #333;
+}
+
+.abtest-container button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.abtest-container button:active {
+  background-color: #0056b3;
+}
+
+.abtest-title {
+  text-align: center;
+  margin-bottom: 20px;
+}

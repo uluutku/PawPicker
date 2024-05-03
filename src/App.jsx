@@ -1,5 +1,3 @@
-// App.jsx
-
 import { useState } from 'react';
 import { Container, Typography } from '@mui/material';
 import UploadImages from './UploadImages';
@@ -11,6 +9,7 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [testData, setTestData] = useState(null);
+  const [testStarted, setTestStarted] = useState(false); // State to track whether the test has started
 
   const startABTest = () => {
     const initialHealth = 100;
@@ -22,6 +21,7 @@ const App = () => {
     }));
     setTestData(initialResults);
     setShowResults(false); // Hide results in case it was shown before
+    setTestStarted(true); // Set testStarted to true when the test starts
   }
 
   const handleImageSelection = (selectedImage) => {
@@ -51,9 +51,10 @@ const App = () => {
   return (
     <Container maxWidth="md" className="app-container">
       <Typography variant="h3" gutterBottom className="app-title">Picture A/B Tester</Typography>
-      {!showResults && (
+      {!testStarted && !showResults && ( // Conditionally render upload section if test hasn't started and results are not shown
         <div className="upload-container">
           <UploadImages setImages={setImages} />
+          <button onClick={startABTest}>Hide Uploaded Images</button>
         </div>
       )}
       <div className="test-section">

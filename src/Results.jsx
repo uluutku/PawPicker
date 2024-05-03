@@ -2,8 +2,8 @@
 
 import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import "./Results.css"
+import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from '@mui/material';
+import './Results.css';
 
 const Results = ({ testData }) => {
   useEffect(() => {
@@ -20,7 +20,11 @@ const Results = ({ testData }) => {
 
   const sortedTestData = useMemo(() => {
     if (!testData) return [];
-    return [...testData].sort((a, b) => b.health - a.health);
+    return [...testData].sort((a, b) => {
+      const ratioA = a.selectedCount / (a.selectedCount + a.notSelectedCount);
+      const ratioB = b.selectedCount / (b.selectedCount + b.notSelectedCount);
+      return ratioB - ratioA;
+    });
   }, [testData]);
 
   const downloadImage = (imageUrl, fileName) => {
@@ -37,14 +41,25 @@ const Results = ({ testData }) => {
         link.download = fileName;
         link.href = URL.createObjectURL(blob);
         link.click();
-      }, 'image/jpeg'); // Change 'image/jpeg' to the original format of the image if needed
+      }, 'image/jpeg');
     };
     img.src = imageUrl;
   };
 
+  // Get the winner image with the highest selected:not selected ratio
+  const winnerImage = sortedTestData.length > 0 ? sortedTestData[0] : null;
+
   return (
     <Paper className="results-paper">
       <Typography variant="h5" gutterBottom className="results-title">Test Results</Typography>
+      {winnerImage && (
+        <div className="winner-section">
+          <Typography variant="h6">Winner Image</Typography>
+          <img src={winnerImage.id} alt="Winner" className="winner-image" />
+          <Button variant="contained" onClick={() => downloadImage(winnerImage.id, 'WinnerImage')}>Download Winner</Button>
+          <Typography variant="body1">Selected: {winnerImage.selectedCount}, Not Selected: {winnerImage.notSelectedCount}</Typography>
+        </div>
+      )}
       <TableContainer>
         <Table className="results-table">
           <TableHead>
@@ -55,6 +70,8 @@ const Results = ({ testData }) => {
               <TableCell align="right">Health Earned</TableCell>
               <TableCell align="right">Health Lost</TableCell>
               <TableCell align="right">Health Remaining</TableCell>
+              <TableCell align="right">Ratio</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -65,6 +82,7 @@ const Results = ({ testData }) => {
                     src={result.id}
                     alt={`Test Image ${index}`}
                     className="results-image"
+                    style={{ maxHeight: '100px', maxWidth: '100px' }}
                     onClick={() => downloadImage(result.id, `TestImage_${index}`)}
                   />
                 </TableCell>
@@ -73,6 +91,10 @@ const Results = ({ testData }) => {
                 <TableCell align="right">{result.selectedCount * 5}</TableCell>
                 <TableCell align="right">{result.notSelectedCount * 10}</TableCell>
                 <TableCell align="right">{result.health}</TableCell>
+                <TableCell align="right">{`${result.selectedCount / (result.selectedCount + result.notSelectedCount) * 100}%`}</TableCell>
+                <TableCell align="right">
+                  <Button variant="outlined" onClick={() => downloadImage(result.id, `TestImage_${index}`)}>Download</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -81,7 +103,7 @@ const Results = ({ testData }) => {
       <Typography variant="body1" gutterBottom className="total-tests-text">Total Tests Conducted: {getTotalTests()}</Typography>
     </Paper>
   );
-}
+};
 
 Results.propTypes = {
   testData: PropTypes.arrayOf(PropTypes.shape({

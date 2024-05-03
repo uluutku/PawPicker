@@ -59,7 +59,7 @@ const ABTest = ({ images }) => {
         setTestingStarted(false);
         setShowResults(true);
     }
-};
+  };
 
   return (
     <div className="abtest-container">
@@ -72,12 +72,10 @@ const ABTest = ({ images }) => {
             <>
               <Grid container spacing={2} className="image-grid">
                 <Grid item xs={6}>
-                  {image1 && <img src={image1} alt="Image 1" className="abtest-image" />}
-                  <Button variant="contained" onClick={() => handleImageSelectionAndUpdate(image1)} className="select-btn">Select</Button>
+                  {image1 && <img src={image1} alt="Image 1" className="abtest-image" onClick={() => handleImageSelectionAndUpdate(image1)} />}
                 </Grid>
                 <Grid item xs={6}>
-                  {image2 && <img src={image2} alt="Image 2" className="abtest-image" />}
-                  <Button variant="contained" onClick={() => handleImageSelectionAndUpdate(image2)} className="select-btn">Select</Button>
+                  {image2 && <img src={image2} alt="Image 2" className="abtest-image" onClick={() => handleImageSelectionAndUpdate(image2)} />}
                 </Grid>
               </Grid>
               <Button variant="contained" color="secondary" onClick={handleFinishTest} className="finish-btn">Finish Test Early</Button>
