@@ -1,67 +1,56 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography } from '@mui/material';
 import UploadImages from './UploadImages';
 import ABTest from './ABTest';
-import Results from './Results';
-import "./App.css"
+import Report from './Report';
+import './App.css';
 
-const App = () => {
-  const [images, setImages] = useState([]);
-  const [showResults, setShowResults] = useState(false);
-  const [testData, setTestData] = useState(null);
-  const [testStarted, setTestStarted] = useState(false); // State to track whether the test has started
+export default function App() {
+    const [images, setImages] = useState([]);
+    const [results, setResults] = useState([]);
+    const [stage, setStage] = useState('upload'); // Correctly initialize to 'upload'
 
-  const startABTest = () => {
-    const initialHealth = 100;
-    const initialResults = images.map(image => ({
-      id: image, // Using image URL as id
-      selectedCount: 0,
-      notSelectedCount: 0,
-      health: initialHealth,
-    }));
-    setTestData(initialResults);
-    setShowResults(false); // Hide results in case it was shown before
-    setTestStarted(true); // Set testStarted to true when the test starts
-  }
+    const handleImageUpload = (uploadedImages) => {
+        setImages(uploadedImages);
+        setStage('test'); // Transition to 'test' after images are uploaded
+    };
 
-  const handleImageSelection = (selectedImage) => {
-    // Find the selected image in the testData array
-    const updatedResults = [...testData];
-    const selectedImageIndex = updatedResults.findIndex(result => result.id === selectedImage);
-    // Increase health of selected image
-    updatedResults[selectedImageIndex].health += 5;
-    // Decrease health of not selected image
-    const notSelectedImageIndex = updatedResults.findIndex(result => result.id !== selectedImage);
-    updatedResults[notSelectedImageIndex].health -= 10;
-    // Update counts
-    updatedResults[selectedImageIndex].selectedCount++;
-    updatedResults[notSelectedImageIndex].notSelectedCount++;
-    // Remove images with health <= 0
-    const filteredResults = updatedResults.filter(result => result.health > 0);
-    setTestData(filteredResults);
+    const handleTestComplete = (testResults) => {
+        setResults(testResults);
+        setStage('report'); // Transition to 'report' only after test is complete
+    };
 
-    // If only one image left, end the test
-    if (filteredResults.length === 1) {
-      setShowResults(true);
-    } else {
-      startABTest(); // Continue test
-    }
-  };
+    const resetTest = () => {
+        setImages([]);
+        setResults([]);
+        setStage('upload'); // Resetting the app to start state
+    };
 
-  return (
-    <Container maxWidth="md" className="app-container">
-      <Typography variant="h3" gutterBottom className="app-title">Picture A/B Tester</Typography>
-      {!testStarted && !showResults && ( // Conditionally render upload section if test hasn't started and results are not shown
-        <div className="upload-container">
-          <UploadImages setImages={setImages} />
-          <button onClick={startABTest}>Hide Uploaded Images</button>
-        </div>
-      )}
-      <div className="test-section">
-        {showResults ? <Results testData={testData} /> : <ABTest images={images} handleImageSelection={handleImageSelection} />}
-      </div>
-    </Container>
-  );
+    const renderContent = () => {
+        switch (stage) {
+            case 'upload':
+                return <UploadImages onImagesUploaded={handleImageUpload} />;
+            case 'test':
+                if (images.length > 1) { // Ensure there are enough images to conduct tests
+                    return <ABTest images={images} onComplete={handleTestComplete} />;
+                } else {
+                    alert('Upload more images to begin testing.');
+                    setStage('upload');
+                    return null;
+                }
+            case 'report':
+                return <Report imageData={results} onReset={resetTest} />;
+            default:
+                return <Typography variant="h6">Invalid application stage</Typography>;
+        }
+    };
+
+    return (
+        <Container maxWidth="md">
+            <Typography variant="h4" gutterBottom className="app-title">
+                Picture A/B Tester
+            </Typography>
+            {renderContent()}
+        </Container>
+    );
 }
-
-export default App;

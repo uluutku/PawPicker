@@ -1,61 +1,26 @@
 /* Results.css */
-
-.results-paper {
+.results-container {
   padding: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
+  max-width: 960px;
 }
 
-.results-title {
+.winner-section {
   margin-bottom: 20px;
-}
-
-.results-table {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.results-image {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
-
-.results-image:hover {
-  transform: scale(1.1);
-}
-
-.total-tests-text {
-  margin-top: 20px;
-}
-
-.results-table th,
-.results-table td {
-  padding: 10px;
-}
-
-.results-table th {
-  background-color: #f0f0f0;
-}
-
-.results-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.results-table tr:hover {
-  background-color: #f0f0f0;
-}
-
-.results-table th,
-.results-table td {
   text-align: center;
-}
-
-.results-table td:last-child {
-  white-space: nowrap;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 2px solid #ffc107; /* Highlight the winner with a golden border */
 }
 
 .winner-image {
-  max-width: 600px; /* Adjust the value as needed */
+  max-width: 300px; /* Larger image for the winner */
   height: auto;
+  margin-bottom: 10px;
+}
+
+.reset-button, .export-button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
 }

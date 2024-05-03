@@ -1,96 +1,80 @@
-// ABTest.jsx
+import React, { useState, useEffect } from 'react';
+import { Typography, Grid, Paper, Card, CardActionArea, Button } from '@mui/material';
 
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Button, Grid, Typography } from '@mui/material';
-import Results from './Results'; // Import the Results component
-import './ABTest.css'; // Import the CSS file
+export default function ABTest({ images, onComplete }) {
+    const [imageData, setImageData] = useState(images.map(url => ({
+        url,
+        health: 100,
+        wins: 0,
+        losses: 0,
+        decisionTimes: []
+    })));
+    const [currentPair, setCurrentPair] = useState([]);
+    const [startTime, setStartTime] = useState(null);
 
-const ABTest = ({ images }) => {
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [testingStarted, setTestingStarted] = useState(false);
-  const [showResults, setShowResults] = useState(false);
-  const [testData, setTestData] = useState([]);
+    useEffect(() => {
+        pickRandomPair();
+    }, [images]); // Ensure this effect correctly handles updates to `images`
 
-  const startTest = () => {
-    const randomImageIndex1 = Math.floor(Math.random() * images.length);
-    let randomImageIndex2 = Math.floor(Math.random() * images.length);
-    while (randomImageIndex2 === randomImageIndex1) {
-      randomImageIndex2 = Math.floor(Math.random() * images.length);
-    }
-    setImage1(images[randomImageIndex1]);
-    setImage2(images[randomImageIndex2]);
-    setTestingStarted(true);
-    setShowResults(false);
-    setTestData(images.map(image => ({ id: image, selectedCount: 0, notSelectedCount: 0, health: 100 }))); // Initialize testData
-  };
-
-  const handleFinishTest = () => {
-    setTestingStarted(false);
-    setShowResults(true);
-  };
-
-  const handleImageSelectionAndUpdate = (selectedImage) => {
-    const updatedTestData = testData.map(item => {
-        if (item.id === selectedImage) {
-            return { ...item, selectedCount: item.selectedCount + 1, health: item.health + 5 };
+    const pickRandomPair = () => {
+        let activeImages = imageData.filter(img => img.health > 0);
+        if (activeImages.length > 1) {
+            activeImages.sort(() => 0.5 - Math.random());
+            setCurrentPair(activeImages.slice(0, 2));
+            setStartTime(Date.now());
         } else {
-            const updatedHealth = item.health - 10;
-            if (updatedHealth >= 0) {
-                return { ...item, notSelectedCount: item.notSelectedCount + 1, health: updatedHealth };
-            } else {
-                return item; // Discard the image with health below 0
+            onComplete(imageData); // When not enough images are active, complete the test
+        }
+    };
+
+    const handleVote = (winnerIndex) => {
+        const endTime = Date.now();
+        const decisionTime = endTime - startTime;
+        const loserIndex = 1 - winnerIndex;
+        const winner = currentPair[winnerIndex];
+        const loser = currentPair[loserIndex];
+
+        updateImageData(winner, loser, decisionTime);
+        pickRandomPair(); // Continue picking pairs after voting
+    };
+
+    const updateImageData = (winner, loser, decisionTime) => {
+        const newData = imageData.map(img => {
+            if (img.url === winner.url) {
+                return { ...img, health: img.health + 5, wins: img.wins + 1, decisionTimes: [...img.decisionTimes, decisionTime] };
+            } else if (img.url === loser.url) {
+                return { ...img, health: Math.max(img.health - 10, 0), losses: img.losses + 1 };
             }
-        }
-    });
-    setTestData(updatedTestData);
+            return img;
+        });
+        setImageData(newData);
+    };
 
-    const remainingImages = images.filter(image => image !== selectedImage && updatedTestData.find(item => item.id === image && item.health > 0));
-    if (remainingImages.length >= 2) {
-        const randomImageIndex1 = Math.floor(Math.random() * remainingImages.length);
-        let randomImageIndex2 = Math.floor(Math.random() * remainingImages.length);
-        while (randomImageIndex2 === randomImageIndex1) {
-            randomImageIndex2 = Math.floor(Math.random() * remainingImages.length);
-        }
-        setImage1(remainingImages[randomImageIndex1]);
-        setImage2(remainingImages[randomImageIndex2]);
-    } else {
-        setTestingStarted(false);
-        setShowResults(true);
+    const finishEarly = () => {
+        onComplete(imageData); // Send the current imageData to the onComplete handler
+    };
+
+    if (currentPair.length === 0) {
+        return <Typography>No more pairs to test, or not enough images.</Typography>;
     }
-  };
 
-  return (
-    <div className="abtest-container">
-      {showResults ? (
-        <Results testData={testData} />
-      ) : (
-        <>
-          <Typography variant="h5" gutterBottom className="abtest-title">A/B Testing</Typography>
-          {testingStarted ? (
-            <>
-              <Grid container spacing={2} className="image-grid">
-                <Grid item xs={6}>
-                  {image1 && <img src={image1} alt="Image 1" className="abtest-image" onClick={() => handleImageSelectionAndUpdate(image1)} />}
-                </Grid>
-                <Grid item xs={6}>
-                  {image2 && <img src={image2} alt="Image 2" className="abtest-image" onClick={() => handleImageSelectionAndUpdate(image2)} />}
-                </Grid>
-              </Grid>
-              <Button variant="contained" color="secondary" onClick={handleFinishTest} className="finish-btn">Finish Test Early</Button>
-            </>
-          ) : (
-            <Button variant="contained" color="primary" onClick={startTest} className="start-btn">Start Test</Button>
-          )}
-        </>
-      )}
-    </div>
-  );
+    return (
+        <Paper>
+            <Typography variant="h5">A/B Test Your Images</Typography>
+            <Grid container spacing={2}>
+                {currentPair.map((item, index) => (
+                    <Grid item xs={12} sm={6} key={index}>
+                        <Card>
+                            <CardActionArea onClick={() => handleVote(index)}>
+                                <img src={item.url} alt={`Image ${index}`} style={{ width: '100%' }} />
+                            </CardActionArea>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
+            <Button variant="contained" color="primary" onClick={finishEarly} style={{ marginTop: '20px' }}>
+                Finish Test Early
+            </Button>
+        </Paper>
+    );
 }
-
-ABTest.propTypes = {
-  images: PropTypes.array.isRequired,
-};
-
-export default ABTest;
