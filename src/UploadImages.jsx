@@ -1,9 +1,9 @@
-// UploadImages.js
+// UploadImages.jsx
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Grid, Typography } from '@mui/material';
-import './UploadImages.css';
+import "./UploadImages.css"
 
 const UploadImages = ({ setImages }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -12,8 +12,8 @@ const UploadImages = ({ setImages }) => {
     const files = event.target.files;
     if (files) {
       const imagesArray = Array.from(files).map((file) => URL.createObjectURL(file));
-      setUploadedImages(imagesArray);
-      setImages(imagesArray);
+      setUploadedImages((prevImages) => [...prevImages, ...imagesArray]);
+      setImages((prevImages) => [...prevImages, ...imagesArray]);
     }
   };
 
@@ -24,10 +24,15 @@ const UploadImages = ({ setImages }) => {
     setImages(updatedImages);
   };
 
+  const handleAddImages = () => {
+    document.getElementById('file-input').click();
+  };
+
   return (
     <div className="upload-images-container">
       <Typography variant="h5" gutterBottom className="upload-title">Upload Images</Typography>
-      <input type="file" accept="image/*" multiple onChange={handleImageUpload} className="upload-input" />
+      <input type="file" accept="image/*" multiple onChange={handleImageUpload} id="file-input" className="upload-input" />
+      <Button variant="contained" color="primary" onClick={handleAddImages} className="add-button">Add Images</Button>
       <Grid container spacing={2} className="uploaded-images-grid">
         {uploadedImages.map((image, index) => (
           <Grid item key={index} className="uploaded-image-item">
@@ -42,7 +47,7 @@ const UploadImages = ({ setImages }) => {
       </Grid>
     </div>
   );
-}
+};
 
 UploadImages.propTypes = {
   setImages: PropTypes.func.isRequired,

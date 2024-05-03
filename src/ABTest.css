@@ -1,21 +1,33 @@
 /* ABTest.css */
 
-/* ABTest container */
 .abtest-container {
-    margin-top: 40px;
-}
-
-/* ABTest title */
-.abtest-title {
+    margin-top: 20px;
+  }
+  
+  .abtest-title {
+    text-align: center;
     margin-bottom: 20px;
-}
-
-/* Select button */
-.select-btn {
+  }
+  
+  .image-grid {
+    margin-bottom: 20px;
+  }
+  
+  .abtest-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .select-btn {
+    margin-top: 10px;
+  }
+  
+  .start-btn {
+    margin-top: 10px;
+  }
+  
+  .finish-btn {
     margin-top: 20px;
-}
-
-/* Finish button */
-.finish-btn {
-    margin-top: 20px;
-}
+  }
+  

@@ -1,63 +1,50 @@
 /* UploadImages.css */
 
 .upload-images-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background-color: #121212;
-    /* Dark mode background */
-    border-radius: 8px;
-}
-
-.upload-title {
     margin-bottom: 20px;
-    color: #ffffff;
-    /* White text color */
-}
-
-.upload-input {
-    display: block;
-    margin-bottom: 20px;
-}
-
-.uploaded-images-grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.uploaded-image-item {
-    margin-right: 10px;
+  }
+  
+  .upload-title {
+    font-size: 24px;
     margin-bottom: 10px;
-}
-
-.image-container {
+  }
+  
+  .upload-input {
+    display: none;
+  }
+  
+  .add-button {
+    margin-bottom: 10px;
+  }
+  
+  .uploaded-images-grid {
+    margin-top: 10px;
+  }
+  
+  .uploaded-image-item {
     position: relative;
-    width: 200px;
-    height: 200px;
-}
-
-.uploaded-image {
+  }
+  
+  .image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-wrapper {
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    overflow: hidden;
+  }
+  
+  .uploaded-image {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    border-radius: 8px;
-}
-
-.delete-button {
+  }
+  
+  .delete-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    padding: 5px;
-    background-color: transparent;
-    color: #ffffff;
-    /* White text color */
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.delete-button:hover {
-    color: #ff0000;
-    /* Red color on hover */
-}
+    top: 5px;
+    right: 5px;
+  }
+  

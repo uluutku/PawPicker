@@ -1,10 +1,11 @@
 // App.jsx
+
 import { useState } from 'react';
 import { Container, Typography } from '@mui/material';
 import UploadImages from './UploadImages';
 import ABTest from './ABTest';
 import Results from './Results';
-import './App.css'; // Import the CSS file
+import "./App.css"
 
 const App = () => {
   const [images, setImages] = useState([]);

@@ -1,4 +1,5 @@
 // ABTest.jsx
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Grid, Typography } from '@mui/material';
@@ -69,13 +70,13 @@ const ABTest = ({ images }) => {
           <Typography variant="h5" gutterBottom className="abtest-title">A/B Testing</Typography>
           {testingStarted ? (
             <>
-              <Grid container spacing={2}>
-                <Grid item>
-                  {image1 && <img src={image1} alt="Image 1" height={200} />}
+              <Grid container spacing={2} className="image-grid">
+                <Grid item xs={6}>
+                  {image1 && <img src={image1} alt="Image 1" className="abtest-image" />}
                   <Button variant="contained" onClick={() => handleImageSelectionAndUpdate(image1)} className="select-btn">Select</Button>
                 </Grid>
-                <Grid item>
-                  {image2 && <img src={image2} alt="Image 2" height={200} />}
+                <Grid item xs={6}>
+                  {image2 && <img src={image2} alt="Image 2" className="abtest-image" />}
                   <Button variant="contained" onClick={() => handleImageSelectionAndUpdate(image2)} className="select-btn">Select</Button>
                 </Grid>
               </Grid>
