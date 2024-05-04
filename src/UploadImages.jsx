@@ -33,7 +33,7 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
 
     return (
         <Paper className="upload-container">
-            <Typography variant="h6">Upload Your Images</Typography>
+            <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans sherif"' }}>Conjure Your Images</Typography>
             <div {...getRootProps()} className="dropzone">
                 <input {...getInputProps()} />
                 <p>Drag 'n' drop some files here, or click to select files</p>
@@ -49,7 +49,7 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
                 ))}
             </Grid>
             <Button variant="contained" color="primary" onClick={handleUpload} disabled={!selectedFiles.length}>
-                Start Test
+                Cast Spell
             </Button>
         </Paper>
     );

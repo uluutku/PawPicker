@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+:root {
+    --card-background-color: #f4f0ff; /* Light purple */
+    --primary-color: #5d55fa; /* Deep purple */
+    --background-color: #ffffff; /* White */
+    --text-color: #333333; /* Dark grey */
+    --error-color: #ff6b6b; /* Red */
+}
+
 .upload-container {
   padding: 20px;
   background-color: var(--card-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Merriweather', serif;
 }
 
 .dropzone {
@@ -14,6 +25,13 @@
   text-align: center;
   margin-bottom: 20px;
   cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+  100% { transform: scale(1); }
 }
 
 .preview-grid {
@@ -24,6 +42,11 @@
   width: 100%;
   height: auto;
   border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.upload-preview-img:hover {
+  transform: scale(1.02);
 }
 
 .delete-icon {

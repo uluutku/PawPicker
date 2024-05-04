@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Card, CardContent, CardMedia, Box } from '@mui/material';
-import Confetti from 'react-confetti'; // Add this for celebratory animation
+import Confetti from 'react-confetti';
 
 export default function Report({ imageData, onReset }) {
     imageData.forEach(img => {
@@ -13,58 +13,61 @@ export default function Report({ imageData, onReset }) {
     const winner = sortedData[0];
 
     return (
-        <Card className="report-container" sx={{ animation: 'fadeIn 1s', maxWidth: 1200, mx: 'auto', my: 2 }}>
+        <Card className="report-container">
             <CardContent>
-                <Typography variant="h4" gutterBottom component="div" sx={{ animation: 'slideDown .5s' }}>
-                    Comprehensive Analysis Report
+                <Typography variant="h4" gutterBottom component="div" style={{ animation: 'slideDown .5s' }}>
+                    Alchemy of Analytics: A Comprehensive Report
                 </Typography>
                 
                 {winner && (
-                    <Box sx={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', my: 2 }}>
+                    <Box sx={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', my: 2 }}>
                         <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={200} recycle={false} />
-                        <Card elevation={6} sx={{ maxWidth: 600, animation: 'scaleUp .5s' }}>
+                        <Typography variant="h5" gutterBottom>
+                            Top Performer Revealed!
+                        </Typography>
+                        <Card elevation={6} sx={{ maxWidth: '100%', animation: 'scaleUp 0.5s' }}>
                             <CardMedia
                                 component="img"
-                                sx={{ height: 'auto', maxWidth: '100%', width: 'auto' }}
                                 image={winner.url}
-                                alt="Winner Image"
+                                alt="Top Performer"
+                                sx={{ width: '100%', maxHeight: 400, objectFit: 'contain' }}
                             />
                             <CardContent>
-                                <Typography variant="h5" textAlign="center">Winner Image Details</Typography>
-                                <Table>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCell>Total Votes</TableCell>
-                                            <TableCell>{winner.votes}</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Wins</TableCell>
-                                            <TableCell>{winner.wins}</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Losses</TableCell>
-                                            <TableCell>{winner.losses}</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Win Percentage</TableCell>
-                                            <TableCell>{winner.winPercentage}%</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Total Score</TableCell>
-                                            <TableCell>{winner.score}</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Avg. Decision Time (ms)</TableCell>
-                                            <TableCell>{winner.avgDecisionTime}</TableCell>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
+                                <Typography>
+                                    Discover the magic behind the success with an impressive win percentage of {winner.winPercentage}%.
+                                </Typography>
                             </CardContent>
                         </Card>
+                        <TableContainer component={Paper} sx={{ maxWidth: 600, mt: 2 }}>
+                            <Table aria-label="Winner details">
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">Wins</TableCell>
+                                        <TableCell align="right">{winner.wins}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">Losses</TableCell>
+                                        <TableCell align="right">{winner.losses}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">Total Votes</TableCell>
+                                        <TableCell align="right">{winner.wins + winner.losses}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">Win Percentage (%)</TableCell>
+                                        <TableCell align="right">{winner.winPercentage}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">Avg. Decision Time (ms)</TableCell>
+                                        <TableCell align="right">{winner.avgDecisionTime}</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </Box>
                 )}
 
-                <TableContainer component={Paper} elevation={2} sx={{ mb: 2 }}>
+                <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
@@ -85,7 +88,7 @@ export default function Report({ imageData, onReset }) {
                                     </TableCell>
                                     <TableCell align="right">{item.wins}</TableCell>
                                     <TableCell align="right">{item.losses}</TableCell>
-                                    <TableCell align="right">{item.votes}</TableCell>
+                                    <TableCell align="right">{item.totalVotes}</TableCell>
                                     <TableCell align="right">{item.winPercentage}</TableCell>
                                     <TableCell align="right">{item.score}</TableCell>
                                     <TableCell align="right">{item.avgDecisionTime}</TableCell>
@@ -95,7 +98,9 @@ export default function Report({ imageData, onReset }) {
                     </Table>
                 </TableContainer>
                 
-                <Button onClick={onReset} variant="contained" sx={{ mt: 2 }}>Reset Analysis</Button>
+                <Button onClick={onReset} variant="contained" style={{ marginTop: '20px', animation: 'pulse 2s infinite' }}>
+                    Reset Enchantment
+                </Button>
             </CardContent>
         </Card>
     );
