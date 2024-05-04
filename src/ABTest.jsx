@@ -33,7 +33,7 @@ export default function ABTest({ images, onComplete }) {
                 onComplete(imageData);
             }
             setLoading(false);
-        }, 1500); // Added delay to simulate loading
+        }, 20); // Added delay to simulate loading
     };
 
     const handleVote = (winnerIndex) => {
