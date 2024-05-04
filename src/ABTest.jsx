@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton , Divider , Chip} from '@mui/material';
-import UndoIcon from '@mui/icons-material/Undo';
+import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton, Divider, Chip } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
-import './ABTest.css';
+import "./ABTest.css";
 
 export default function ABTest({ images, onComplete }) {
     const [imageData, setImageData] = useState(images.map(url => ({
@@ -30,7 +29,6 @@ export default function ABTest({ images, onComplete }) {
                 activeImages.sort(() => 0.5 - Math.random());
                 setCurrentPair(activeImages.slice(0, 2));
                 setStartTime(Date.now());
-                updateProgress();
             } else {
                 onComplete(imageData);
             }
@@ -54,12 +52,17 @@ export default function ABTest({ images, onComplete }) {
             return img;
         });
         setImageData(updatedImageData);
+
+        // Updating vote history to correctly calculate progress
+        const newVoteHistory = [...voteHistory, { winner: winner.url, loser: loser.url }];
+        setVoteHistory(newVoteHistory);
+        updateProgress(newVoteHistory.length); // Update progress with new vote history length
+
         pickRandomPair();
     };
 
-    const updateProgress = () => {
+    const updateProgress = (pairsTested) => {
         const totalPairsPossible = imageData.length * (imageData.length - 1) / 2;
-        const pairsTested = voteHistory.length;
         setProgress((pairsTested / totalPairsPossible) * 100);
     };
 
@@ -73,9 +76,9 @@ export default function ABTest({ images, onComplete }) {
                         <Card className="image-card">
                             <CardActionArea onClick={() => handleVote(index)}>
                                 {loading ? (
-                                    <Skeleton variant="rounded" animation="wave" className="card-skeleton"  />
+                                    <Skeleton variant="rounded" animation="wave" className="card-skeleton" />
                                 ) : (
-                                    <img src={item.url} alt={`Image ${index}`} className="image-display"  />
+                                    <img src={item.url} alt={`Image ${index}`} className="image-display" />
                                 )}
                             </CardActionArea>
                         </Card>
@@ -83,7 +86,6 @@ export default function ABTest({ images, onComplete }) {
                 ))}
             </Grid>
             <div className="action-buttons">
-                
                 <IconButton onClick={() => onComplete(imageData)} className="icon-button" disabled={loading}>
                     <DoneIcon />
                 </IconButton>
