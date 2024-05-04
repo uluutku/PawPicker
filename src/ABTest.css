@@ -77,4 +77,12 @@
   .grid-item {
       min-height: 50vh; /* Larger images on small screens */
   }
+
+  .abtest-container {
+    padding: 0.8em;
+    background-color: var(--card-background-color);
+    margin: 0 auto;
+    max-width: 95vw;
+  }
+  
 }
