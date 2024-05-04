@@ -1,86 +1,17 @@
-/* Report.css */
-.report-container {
-    padding: 30px;
-    margin: 20px auto;
-    max-width: 1200px;
-    background: linear-gradient(to right, #ffffff, #f8faff);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.report-title {
-    font-size: 2em;
-    color: #333;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-.report-table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-}
-
-.report-thead {
-    background-color: #673ab7;
-    color: #fff;
-}
-
-.report-th,
-.report-td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.report-th:first-child,
-.report-td:first-child {
-    border-radius: 8px 0 0 8px;
-}
-
-.report-th:last-child,
-.report-td:last-child {
-    border-radius: 0 8px 8px 0;
-    text-align: right;
-}
-
-.report-tbody tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-    transform: scale(1.01);
-    transition: transform 0.3s ease;
-}
-
-.image-preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #673ab7;
-    transition: border-color 0.3s ease;
-}
-
-.image-preview:hover {
-    border-color: #9c27b0;
-}
-
-.stat-highlight {
-    font-weight: bold;
-    color: #673ab7;
-}
-
-/* Additional styles for graphs or other sections can be added here */
 .report-container {
     padding: 20px;
-    margin: auto;
-    max-width: 960px;
-    background: rgb(173, 135, 135);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+    margin-top: 20px;
 }
 
 .winner-section {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    border: 3px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }

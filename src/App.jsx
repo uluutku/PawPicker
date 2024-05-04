@@ -46,7 +46,7 @@ export default function App() {
     };
 
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="xl" >
             <Typography variant="h4" gutterBottom className="app-title">
                 Picture A/B Tester
             </Typography>

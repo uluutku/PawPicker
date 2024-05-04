@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@mui/material';
 import './Report.css';
 
-
 export default function Report({ imageData }) {
     // Compute win/loss ratios and sort images based on this ratio
     imageData.forEach(img => {
@@ -25,11 +24,11 @@ export default function Report({ imageData }) {
 
     return (
         <Paper className="report-container">
-            <Typography variant="h4" className="report-title">Detailed Analysis Report</Typography>
+            <Typography variant="h3" className="report-title">Detailed Analysis Report</Typography>
             {winner && (
-                <Box className="winner-section" style={{ marginBottom: "50px" }}>
-                    <Typography variant="h6">Winner</Typography>
-                    <img src={winner.url} alt="Winner" style={{ width: '100%', maxWidth: '700px', borderRadius: '8px' , border: '6px solid gold', margin: '20px'  }} />
+                <Box className="winner-section" style={{ marginBottom: "50px"}}>
+                    <Typography variant="h6">Winner image</Typography>
+                    <img src={winner.url} alt="Winner" style={{ width: '100%', maxWidth: '30vw', height: "auto" , borderRadius: '8px' , border: '6px solid gold', margin: '20px'  }} />
                     <Typography><b>{`Wins: ${winner.wins}, Losses: ${winner.losses}, Ratio: ${winner.ratio.toFixed(2)}`}</b></Typography>
                 </Box>
             )}
@@ -49,7 +48,7 @@ export default function Report({ imageData }) {
                         {sortedData.map((item, index) => (
                             <TableRow key={index}>
                                 <TableCell>
-                                    <img src={item.url} alt={`Uploaded ${index}`} style={{ width: 150, height: 150, objectFit: 'cover' }} />
+                                    <img src={item.url} alt={`Uploaded ${index}`} style={{ width: 120, height: 120, objectFit: 'cover' }} />
                                 </TableCell>
                                 <TableCell>{item.wins}</TableCell>
                                 <TableCell>{item.losses}</TableCell>
