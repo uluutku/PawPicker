@@ -38,18 +38,23 @@ export default function ABTest({ images, onComplete }) {
     };
 
     const handleVote = (winnerIndex) => {
-        if (!loading) {
-            const endTime = Date.now();
-            const decisionTime = endTime - startTime;
-            const loserIndex = 1 - winnerIndex;
-            const winner = currentPair[winnerIndex];
-            const loser = currentPair[loserIndex];
-
-            const updatedImageData = updateImageData(winner, loser, decisionTime);
-            setVoteHistory([...voteHistory, { winner: winner.url, loser: loser.url }]);
-            setImageData(updatedImageData);
-            pickRandomPair();
-        }
+        const endTime = Date.now();
+        const decisionTime = endTime - startTime;
+        const loserIndex = 1 - winnerIndex;
+        const winner = currentPair[winnerIndex];
+        const loser = currentPair[loserIndex];
+    
+        // Update the image data with more detailed recording
+        const updatedImageData = imageData.map(img => {
+            if (img.url === winner.url) {
+                return { ...img, health: img.health + 5, wins: img.wins + 1, decisionTimes: [...img.decisionTimes, decisionTime], votes: (img.votes || 0) + 1 };
+            } else if (img.url === loser.url) {
+                return { ...img, health: Math.max(img.health - 10, 0), losses: img.losses + 1, votes: (img.votes || 0) + 1 };
+            }
+            return img;
+        });
+        setImageData(updatedImageData);
+        pickRandomPair();
     };
 
     const updateImageData = (winner, loser, decisionTime) => {
