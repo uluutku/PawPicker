@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton } from '@mui/material';
+import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton , Divider , Chip} from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
 import DoneIcon from '@mui/icons-material/Done';
 import './ABTest.css';
@@ -35,7 +35,7 @@ export default function ABTest({ images, onComplete }) {
                 onComplete(imageData);
             }
             setLoading(false);
-        }, 500); // Added delay to simulate loading
+        }, 1500); // Added delay to simulate loading
     };
 
     const handleVote = (winnerIndex) => {
@@ -73,9 +73,9 @@ export default function ABTest({ images, onComplete }) {
                         <Card className="image-card">
                             <CardActionArea onClick={() => handleVote(index)}>
                                 {loading ? (
-                                    <Skeleton variant="rectangular" className="card-skeleton" />
+                                    <Skeleton variant="rounded" animation="wave" className="card-skeleton"  />
                                 ) : (
-                                    <img src={item.url} alt={`Image ${index}`} className="image-display" />
+                                    <img src={item.url} alt={`Image ${index}`} className="image-display"  />
                                 )}
                             </CardActionArea>
                         </Card>
