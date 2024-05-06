@@ -44,7 +44,7 @@ const styles = {
   },
   imageCard: {
     width: "100%",
-    maxHeight: "300px",
+    maxHeight: "50vh",
     overflow: "hidden",
     borderRadius: "5px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
