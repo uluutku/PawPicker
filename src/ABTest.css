@@ -8,11 +8,17 @@
   --button-hover-color: #7c4dff;
 }
 
+.ab-test-page {
+  min-height: 100vh;
+}
+
 .abtest-container {
+  margin-top: 50px;
+  min-height: 50vh;
   padding: 1em;
   background-color: var(--card-background-color);
   color: white;
-  margin: 0 auto;
+  margin: 50px auto;
   max-width: 60vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

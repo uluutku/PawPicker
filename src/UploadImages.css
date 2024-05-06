@@ -8,15 +8,22 @@
     --error-color: #ff6b6b; /* Red */
 }
 
+.upload-page {
+  min-height: 100vh;
+}
+
 .upload-container {
+  margin-top: 20vh;
   padding: 20px;
   background-color: var(--card-background-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Merriweather', serif;
+  min-height: 60vh;
 }
 
 .dropzone {
+  margin-top: 20px;
   padding: 20px;
   border: 2px dashed var(--primary-color);
   border-radius: 8px;
@@ -26,6 +33,10 @@
   margin-bottom: 20px;
   cursor: pointer;
   animation: pulse 2s infinite;
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes pulse {

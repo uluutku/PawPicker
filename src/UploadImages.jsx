@@ -32,6 +32,9 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
     };
 
     return (
+        <div className='upload-page'>
+
+        
         <Paper className="upload-container">
             <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans serif"' }}>Throw your pictures into the wizard&apos;s cauldron</Typography>
             <div {...getRootProps()} className="dropzone">
@@ -48,10 +51,11 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
                     </Grid>
                 ))}
             </Grid>
-            <Button variant="contained" color="primary" onClick={handleUpload} disabled={!selectedFiles.length}>
+            <Button className="start-test-btn" variant="contained" color="primary" onClick={handleUpload} disabled={!selectedFiles.length} sx={{ mt: 2 }}>
                 Cast Selection Spell
             </Button>
-        </Paper>
+            </Paper>
+            </div>
     );
 }
 

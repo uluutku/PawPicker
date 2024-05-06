@@ -3,7 +3,7 @@ import { Container, Typography } from '@mui/material';
 import UploadImages from './UploadImages';
 import ABTest from './ABTest';
 import Report from './Report';
-import './App.css';
+import "./App.css";
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { Route, Routes } from 'react-router-dom';
@@ -57,10 +57,7 @@ export default function App() {
                     <Route path="/" element={<LandingHero />} />
                     <Route path="/tester" element={
                         <div>
-        <Container maxWidth="xl">
-            <Typography variant="h4" gutterBottom className="app-title">
-                Magical Picture A/B Tester
-            </Typography>
+        <Container>
             {renderContent()}
                 </Container>
                 </div>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import "./ABTest.css";
+import "./ABTest.css"
 import { useState, useEffect , useCallback} from 'react';
 import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
@@ -94,6 +94,7 @@ export default function ABTest({ images, onComplete }) {
     };
 
     return (
+        <div className='ab-test-page'>
         <Paper elevation={3} className="abtest-container">
             <Typography variant="h5" className="test-heading">Just select the better-looking one between theese.</Typography>
             <LinearProgress variant="determinate" value={progress} className="progress-bar" />
@@ -117,7 +118,8 @@ export default function ABTest({ images, onComplete }) {
                     <DoneIcon />
                 </IconButton>
             </div>
-        </Paper>
+            </Paper>
+            </div>
     );
 }
 
