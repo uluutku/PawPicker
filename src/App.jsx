@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Container, Typography } from '@mui/material';
-import UploadImages from './UploadImages';
-import ABTest from './ABTest';
+import UploadImages from './UploadImages/UploadImages';
+import ABTest from './ABTest/ABTest';
 import Report from './Report';
 import "./App.css";
 import Header from './Header/Header';

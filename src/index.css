@@ -20,7 +20,7 @@ body {
     font-family: 'Merriweather', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.33s ease;
 }
 
 
