@@ -43,14 +43,25 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
   return (
     <Box sx={styles.uploadPage}>
       <Paper sx={styles.uploadContainer}>
-        <Typography variant="h6" sx={styles.titleText}>
-          Throw your pictures into the wizard&apos;s cauldron
+        <Typography variant="h5" sx={styles.titleText}>
+          Throw your pictures into the wizard&apos;s hat!
         </Typography>
         <Box {...getRootProps()} sx={styles.dropzone}>
           <input {...getInputProps()} />
           <p>
-            Drag &apos;n&apos; drop some files here, or click to select files
+            Drag &apos;n&apos; drop some files in hat, or click to select files
           </p>
+          <img
+            src="https://en.snackson.com/wp-content/uploads/2015/06/magic_hat-255x258.png"
+            alt="Wizard Hat"
+            style={{
+              width: "5vw",
+              minWidth: "60px",
+              alignSelf: "center",
+              marginTop: "30px",
+              animation: "bounce 2s infinite",
+            }}
+          />{" "}
         </Box>
         <Grid container spacing={2} sx={{ mt: 2 }}>
           {selectedFiles.map((file, index) => (

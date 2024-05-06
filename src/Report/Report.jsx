@@ -38,7 +38,7 @@ export default function Report({ imageData, onReset }) {
       sx={{
         mt: "10vh",
         mb: "10vh",
-        bgcolor: "#162447", // Dark blue background
+        bgcolor: "#333333", // Dark blue background
         color: "#c9d1d9", // Light grey text
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.5)", // Enhanced shadow
         borderRadius: "10px",
@@ -63,6 +63,7 @@ export default function Report({ imageData, onReset }) {
             sx={{
               position: "relative",
               display: "flex",
+
               flexDirection: "column",
               alignItems: "center",
               my: 2,
@@ -85,7 +86,7 @@ export default function Report({ imageData, onReset }) {
                 component="img"
                 image={winner.url}
                 alt="Top Performer"
-                sx={{ width: "100%", maxHeight: 500, objectFit: "contain" }}
+                sx={{ width: "100%", maxHeight: 600, objectFit: "contain" }}
               />
               <CardContent>
                 <Typography>
@@ -94,7 +95,7 @@ export default function Report({ imageData, onReset }) {
                 </Typography>
               </CardContent>
             </Card>
-            <TableContainer component={Paper} sx={{ maxWidth: "80%", mt: 2 }}>
+            <TableContainer component={Paper} sx={{ maxWidth: "95%", mt: 2 }}>
               <Table aria-label="Winner details">
                 <TableBody>
                   <TableRow>
@@ -137,8 +138,8 @@ export default function Report({ imageData, onReset }) {
           </Box>
         )}
 
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer component={Paper} sx={{ maxWidth: "100%" }}>
+          <Table sx={{ minWidth: 550 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Image</TableCell>

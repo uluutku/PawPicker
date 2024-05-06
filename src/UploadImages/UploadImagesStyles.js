@@ -21,7 +21,8 @@ const styles = {
   },
   titleText: {
     color: "#dddddd",
-    mb: 2,
+    m: 2,
+    textAlign: "center",
   },
   dropzone: {
     m: "3vh 3vw",
