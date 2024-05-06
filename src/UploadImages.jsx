@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import { Button, Grid, Typography, Paper, IconButton } from '@mui/material';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDropzone } from 'react-dropzone';
 import './UploadImages.css';
