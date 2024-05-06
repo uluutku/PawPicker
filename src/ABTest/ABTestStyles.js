@@ -1,79 +1,77 @@
-import { maxWidth } from "@mui/system";
-
 const styles = {
   abTestPage: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    m: 0, // Zero margin
-    p: 0, // Zero padding
-    height: "100vh", // Ensures the page takes up full viewport height
-    backgroundColor: "#121212", // Dark background for better contrast in dark mode
-    color: "#ffffff", // White text for readability
+    m: 0,
+    p: 0,
+    height: "100vh",
+    backgroundColor: "#121212",
+    color: "#ffffff",
   },
   abtestContainer: {
     width: "100%",
-    minWidth: "60vw", // Minimum width for better responsiveness+
-    minHeight: "60vh", // Minimum height for better responsiveness
+    minWidth: "60vw",
+    minHeight: "60vh",
     padding: "20px",
-    backgroundColor: "#333333", // Dark grey background
-    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.25)", // More prominent shadow for depth
+    backgroundColor: "#333333",
+    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.25)",
     borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center", // Center vertically
-    justifyContent: "center", // Center horizontally
-    gap: "20px", // Space between child elements
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "20px",
   },
   testHeading: {
-    fontSize: "1.5rem", // Larger font size for headings
-    fontWeight: "bold", // Bold font weight for emphasis
+    fontSize: "1.5rem",
+    fontWeight: "bold",
     textAlign: "center",
-    color: "#81D4FA", // Light blue for an appealing contrast
+    color: "#81D4FA",
   },
   progressBar: {
-    width: "100%", // Full width of the container
+    width: "100%",
     height: "10px",
     borderRadius: "5px",
-    backgroundColor: "#555555", // Darker grey background for the progress bar
+    backgroundColor: "#555555",
   },
   gridItem: {
-    width: "100%", // Ensures the grid item takes the full width of its container
+    width: "100%",
     padding: "10px",
     display: "flex",
-    justifyContent: "center", // Centers the cards horizontally
+    justifyContent: "center",
   },
   imageCard: {
-    width: "100%", // Full width to maximize space
-    maxHeight: "300px", // Max height for images
-    overflow: "hidden", // Hides parts of the image that overflow the container
-    borderRadius: "5px", // Rounded corners for a softer look
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-    transition: "transform 0.3s ease-in-out", // Smooth transform on hover
-    display: "flex", // Ensures that the child elements can be flexibly aligned
-    justifyContent: "center", // Centers the image horizontally
+    width: "100%",
+    maxHeight: "300px",
+    overflow: "hidden",
+    borderRadius: "5px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    transition: "transform 0.3s ease-in-out",
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
     "&:hover": {
-      transform: "scale(1.05)", // Slightly enlarge the card on hover
+      transform: "scale(1.05)",
     },
   },
   imageDisplay: {
     maxWidth: "100%",
     maxHeight: "100%",
-    height: "auto", // Adjust height automatically to maintain aspect ratio
-    width: "auto", // Adjust width automatically to maintain aspect ratio
+    height: "auto",
+    width: "auto",
     objectFit: "contain",
   },
   actionButtons: {
     display: "flex",
-    justifyContent: "center", // Center alignment for the action buttons
-    padding: "10px 0", // Padding top and bottom
+    justifyContent: "center",
+    padding: "10px 0",
   },
   iconButton: {
-    color: "#4caf50", // Green color for actionable icons
+    color: "#4caf50",
     "&:hover": {
-      backgroundColor: "#388e3c", // Darker green on hover for better feedback
+      backgroundColor: "#388e3c",
     },
   },
 };

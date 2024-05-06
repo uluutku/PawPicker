@@ -4,33 +4,38 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     padding: "20px",
-    height: "100vh", // Full viewport height
-    backgroundColor: "#121212", // Dark background for the entire upload page
+    minHeight: "100vh",
+    backgroundColor: "#121212",
   },
   uploadContainer: {
-    mt: "10vh", // Sets top margin; adjust as necessary
+    mt: "10vh",
     padding: "10px",
-    backgroundColor: "#333333", // Dark grey
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)", // Stronger shadow for dark mode
+    backgroundColor: "#333333",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
     borderRadius: "10px",
     width: "100%",
     minHeight: "80vh",
   },
+  titleText: {
+    color: "#dddddd",
+    mb: 2,
+  },
   dropzone: {
     display: "flex",
-    minHeight: "200px", // Minimum height for the dropzone area
+    minHeight: "20vh",
+    maxHeight: "50vh",
     flexDirection: "column",
-    justifyContent: "center", // Vertical centering
-    alignItems: "center", // Horizontal centering
-    border: "2px dashed #555555", // Darker gray border
+    justifyContent: "center",
+    alignItems: "center",
+    border: "2px dashed #555555",
     borderRadius: "10px",
-    backgroundColor: "#2a2a2a", // Very dark gray background
-    color: "#dddddd", // Light gray text for better contrast
+    backgroundColor: "#2a2a2a",
+    color: "#dddddd",
     padding: "20px",
     textAlign: "center",
     "&:hover": {
-      borderColor: "#3f51b5", // Primary blue on hover
-      backdropFilter: "blur(4px)", // Blur effect on hover
+      borderColor: "#3f51b5",
+      backdropFilter: "blur(4px)",
     },
   },
   gridItem: {
@@ -39,34 +44,34 @@ const styles = {
       width: "100%",
       height: "auto",
       borderRadius: "5px",
-      transition: "transform 0.4s ease", // Smoother transition for scaling
+      transition: "transform 0.4s ease",
       "&:hover": {
-        zIndex: 1, // Ensures the image is on top of other elements on hover
-        transform: "scale(1.05)", // Scales the image up by 150% on hover after 1 second
+        zIndex: 1,
+        transform: "scale(1.05)",
       },
     },
   },
   deleteIcon: {
     position: "absolute",
-    bottom: "8px", // More visually pleasing placement
-    right: "8px", // More visually pleasing placement
-    color: "#f44336", // Red color for delete actions, indicating a warning or negative action
-    backgroundColor: "rgba(0, 0, 0, 0.7)", // Slightly transparent black background to make the icon stand out
-    borderRadius: "50%", // Circular shape
-    padding: "5px", // Padding around the icon
-    transition: "transform 0.4s ease", // Smoother transition for scaling
+    bottom: "8px",
+    right: "8px",
+    color: "#f44336",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    borderRadius: "50%",
+    padding: "5px",
+    transition: "transform 0.4s ease",
     "&:hover": {
-      zIndex: 1, // Ensures the image is on top of other elements on hover
-      transform: "scale(1.2)", // Scales the image up by 150% on hover after 1 second
-      backgroundColor: "rgba(0, 0, 0, 0.9)", // Darker background on hover
+      zIndex: 1,
+      transform: "scale(1.2)",
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
     },
   },
   button: {
-    mt: 2, // Sets top margin; adjust as necessary
-    backgroundColor: "#4caf50", // Green button for actions
-    color: "#ffffff", // White text on button
+    mt: 2,
+    backgroundColor: "#4caf50",
+    color: "#ffffff",
     "&:hover": {
-      backgroundColor: "#388e3c", // Darker green on hover
+      backgroundColor: "#388e3c",
     },
   },
 };
