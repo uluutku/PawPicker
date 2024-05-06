@@ -27,6 +27,7 @@ export default function ABTest({ images, onComplete }) {
   const [currentPair, setCurrentPair] = useState([]);
   const [voteHistory, setVoteHistory] = useState([]);
   const [startTime, setStartTime] = useState(null);
+  const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const pickRandomPair = useCallback(() => {

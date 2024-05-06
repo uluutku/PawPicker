@@ -69,9 +69,11 @@ const styles = {
     padding: "10px 0",
   },
   iconButton: {
-    color: "#4caf50",
+    color: "#8aca8c",
+    backgroundColor: "#388e3c",
     "&:hover": {
-      backgroundColor: "#388e3c",
+      backgroundColor: "#245e27",
+      color: "#5ebd61",
     },
   },
 };

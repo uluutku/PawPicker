@@ -15,15 +15,19 @@ const styles = {
     borderRadius: "10px",
     width: "100%",
     minHeight: "80vh",
+    display: "flex", // Use Flexbox
+    flexDirection: "column", // Column layout
+    justifyContent: "space-between", // Push button to the bottom
   },
   titleText: {
     color: "#dddddd",
     mb: 2,
   },
   dropzone: {
+    m: "3vh 3vw",
     display: "flex",
-    minHeight: "20vh",
-    maxHeight: "50vh",
+    minHeight: "30vh",
+    minWidth: "80%",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -67,11 +71,17 @@ const styles = {
     },
   },
   button: {
-    mt: 2,
+    alignSelf: "flex-end", // Align button to the right
+    mb: 4,
+    mr: 4,
     backgroundColor: "#4caf50",
     color: "#ffffff",
     "&:hover": {
       backgroundColor: "#388e3c",
+    },
+    "&:disabled": {
+      backgroundColor: "#757575",
+      color: "#bdbdbd",
     },
   },
 };
