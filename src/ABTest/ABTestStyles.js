@@ -38,14 +38,13 @@ const styles = {
     backgroundColor: "#555555",
   },
   gridItem: {
-    width: "100%",
+    height: "100%",
     padding: "10px",
     display: "flex",
     justifyContent: "center",
   },
   imageCard: {
     width: "100%",
-    maxHeight: "50vh",
     overflow: "hidden",
     borderRadius: "5px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

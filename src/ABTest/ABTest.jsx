@@ -126,8 +126,8 @@ export default function ABTest({ images, onComplete }) {
           <div
             style={{ color: "#ffffff", textAlign: "center", marginTop: "5px" }}
           >
-            Enough data is collected, but keep voting more images. It will
-            refine results.
+            Minimum needed data is collected, but keep voting more images. It
+            will refine results.
           </div>
         )}
         <Grid container spacing={2}>
