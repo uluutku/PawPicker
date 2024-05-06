@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton, Divider, Chip } from '@mui/material';
-import DoneIcon from '@mui/icons-material/Done';
+import PropTypes from 'prop-types';
 import "./ABTest.css";
+import { useState, useEffect , useCallback} from 'react';
+import { Typography, Grid, Paper, Card, CardActionArea, IconButton, LinearProgress, Skeleton } from '@mui/material';
+import DoneIcon from '@mui/icons-material/Done';
 
 export default function ABTest({ images, onComplete }) {
     const [imageData, setImageData] = useState(images.map(url => ({
@@ -17,11 +18,7 @@ export default function ABTest({ images, onComplete }) {
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        pickRandomPair();
-    }, [images]);
-
-    const pickRandomPair = () => {
+    const pickRandomPair = useCallback(() => {
         setLoading(true);
         setTimeout(() => {
             let activeImages = imageData.filter(img => img.health > 0);
@@ -33,33 +30,63 @@ export default function ABTest({ images, onComplete }) {
                 onComplete(imageData);
             }
             setLoading(false);
-        }, 20); // Added delay to simulate loading
-    };
+        }, 0); // Added delay to simulate loading
+    }, [imageData, onComplete]);
+
+    useEffect(() => {
+        pickRandomPair();
+    }, [images, pickRandomPair]);
 
     const handleVote = (winnerIndex) => {
-        const endTime = Date.now();
-        const decisionTime = endTime - startTime;
-        const loserIndex = 1 - winnerIndex;
-        const winner = currentPair[winnerIndex];
-        const loser = currentPair[loserIndex];
+    const endTime = Date.now();
+    const decisionTime = endTime - startTime;
+    const loserIndex = 1 - winnerIndex;
+    const winner = currentPair[winnerIndex];
+    const loser = currentPair[loserIndex];
 
-        const updatedImageData = imageData.map(img => {
-            if (img.url === winner.url) {
-                return { ...img, health: img.health + 5, wins: img.wins + 1, decisionTimes: [...img.decisionTimes, decisionTime], votes: (img.votes || 0) + 1 };
-            } else if (img.url === loser.url) {
-                return { ...img, health: Math.max(img.health - 10, 0), losses: img.losses + 1, votes: (img.votes || 0) + 1 };
-            }
-            return img;
-        });
-        setImageData(updatedImageData);
+    // Define base points and calculate the multiplier based on decision time
+    const basePoints = 10;
+    let multiplier;
+    if (decisionTime <= 800) { // 3 seconds or less for a strong decision
+        multiplier = 3;
+    } else if (decisionTime <= 2000) { // Between 3 and 6 seconds for a moderate decision
+        multiplier = 1;
+    } else { // More than 6 seconds for a weak decision
+        multiplier = 0.33;
+    }
 
-        // Updating vote history to correctly calculate progress
-        const newVoteHistory = [...voteHistory, { winner: winner.url, loser: loser.url }];
-        setVoteHistory(newVoteHistory);
-        updateProgress(newVoteHistory.length); // Update progress with new vote history length
+    // Apply the multiplier to the base points
+    const winnerPoints = Math.round(basePoints * multiplier);
+    const loserPoints = Math.round(basePoints * multiplier);
 
-        pickRandomPair();
-    };
+    const updatedImageData = imageData.map(img => {
+        if (img.url === winner.url) {
+            return {
+                ...img,
+                health: Math.min(img.health + winnerPoints, 100),
+                wins: img.wins + 1,
+                decisionTimes: [...img.decisionTimes, decisionTime],
+                votes: (img.votes || 0) + 1
+            };
+        } else if (img.url === loser.url) {
+            return {
+                ...img,
+                health: Math.max(img.health - loserPoints, 0), 
+                losses: img.losses + 1,
+                votes: (img.votes || 0) + 1
+            };
+        }
+        return img;
+    });
+    setImageData(updatedImageData);
+
+    // Updating vote history to correctly calculate progress
+    const newVoteHistory = [...voteHistory, { winner: winner.url, loser: loser.url }];
+    setVoteHistory(newVoteHistory);
+    updateProgress(newVoteHistory.length);
+
+    pickRandomPair();
+};
 
     const updateProgress = (pairsTested) => {
         const totalPairsPossible = imageData.length * (imageData.length - 1) / 2;
@@ -68,7 +95,7 @@ export default function ABTest({ images, onComplete }) {
 
     return (
         <Paper elevation={3} className="abtest-container">
-            <Typography variant="h5" className="test-heading">Select the better-looking one</Typography>
+            <Typography variant="h5" className="test-heading">Just select the better-looking one between theese.</Typography>
             <LinearProgress variant="determinate" value={progress} className="progress-bar" />
             <Grid container spacing={2}>
                 {currentPair.map((item, index) => (
@@ -93,3 +120,8 @@ export default function ABTest({ images, onComplete }) {
         </Paper>
     );
 }
+
+ABTest.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onComplete: PropTypes.func.isRequired,
+};

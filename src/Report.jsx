@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Card, CardContent, CardMedia, Box } from '@mui/material';
 import Confetti from 'react-confetti';
 
@@ -15,17 +15,17 @@ export default function Report({ imageData, onReset }) {
     return (
         <Card className="report-container">
             <CardContent>
-                <Typography variant="h4" gutterBottom component="div" style={{ animation: 'slideDown .5s' }}>
-                    Alchemy of Analytics: A Comprehensive Report
+                <Typography variant="h4" gutterBottom component="div" style={{ animation: 'slideDown 1s' }}>
+                    Alchemy of Analytics: Selection Spell Report
                 </Typography>
                 
                 {winner && (
                     <Box sx={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', my: 2 }}>
-                        <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={200} recycle={false} />
+                        <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={400} recycle={false} />
                         <Typography variant="h5" gutterBottom>
                             Top Performer Revealed!
                         </Typography>
-                        <Card elevation={6} sx={{ maxWidth: '100%', animation: 'scaleUp 0.5s' }}>
+                        <Card elevation={1} sx={{ maxWidth: '100%', animation: 'scaleUp 1s' }}>
                             <CardMedia
                                 component="img"
                                 image={winner.url}
@@ -105,3 +105,13 @@ export default function Report({ imageData, onReset }) {
         </Card>
     );
 }
+
+Report.propTypes = {
+    imageData: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        wins: PropTypes.number.isRequired,
+        losses: PropTypes.number.isRequired,
+        decisionTimes: PropTypes.arrayOf(PropTypes.number).isRequired
+    })).isRequired,
+    onReset: PropTypes.func.isRequired,
+};
