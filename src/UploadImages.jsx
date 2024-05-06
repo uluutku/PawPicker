@@ -33,7 +33,7 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
 
     return (
         <Paper className="upload-container">
-            <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans serif"' }}>Throw your pictures into the wizard's cauldron</Typography>
+            <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans serif"' }}>Throw your pictures into the wizard&apos;s cauldron</Typography>
             <div {...getRootProps()} className="dropzone">
                 <input {...getInputProps()} />
                 <p>Drag &apos;n&apos; drop some files here, or click to select files</p>

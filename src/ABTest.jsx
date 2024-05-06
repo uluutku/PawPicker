@@ -47,11 +47,11 @@ export default function ABTest({ images, onComplete }) {
     // Define base points and calculate the multiplier based on decision time
     const basePoints = 10;
     let multiplier;
-    if (decisionTime <= 800) { // 3 seconds or less for a strong decision
+    if (decisionTime <= 800) { // Less than 800ms for a strong decision
         multiplier = 3;
-    } else if (decisionTime <= 2000) { // Between 3 and 6 seconds for a moderate decision
+    } else if (decisionTime <= 2000) { // Less than 2 seconds for a medium decision
         multiplier = 1;
-    } else { // More than 6 seconds for a weak decision
+    } else { // More than 2 seconds for a weak decision
         multiplier = 0.33;
     }
 
