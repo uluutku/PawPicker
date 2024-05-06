@@ -2,6 +2,7 @@ import { Button, Grid, Typography, Paper, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDropzone } from 'react-dropzone';
 import './UploadImages.css';
+import { useState } from 'react';
 
 export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
     const [selectedFiles, setSelectedFiles] = useState([]);
