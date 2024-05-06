@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, Paper, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDropzone } from 'react-dropzone';
+import PropTypes from 'prop-types'; // Import PropTypes
 import './UploadImages.css';
 import { useState } from 'react';
 
@@ -32,10 +33,10 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
 
     return (
         <Paper className="upload-container">
-            <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans sherif"' }}>Throw your pictures into the wizard's cauldron</Typography>
+            <Typography variant="h6" style={{ fontFamily: '"Merriweather", "Roboto", "sans serif"' }}>Throw your pictures into the wizard's cauldron</Typography>
             <div {...getRootProps()} className="dropzone">
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
             </div>
             <Grid container spacing={2} className="preview-grid">
                 {selectedFiles.map((file, index) => (
@@ -53,3 +54,9 @@ export default function UploadImages({ onImagesUploaded, onImageRemoved }) {
         </Paper>
     );
 }
+
+// Define prop types
+UploadImages.propTypes = {
+    onImagesUploaded: PropTypes.func.isRequired, // Function required
+    onImageRemoved: PropTypes.func.isRequired   // Function required
+};
