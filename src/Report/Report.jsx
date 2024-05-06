@@ -92,7 +92,7 @@ export default function Report({ imageData, onReset }) {
                 </Typography>
               </CardContent>
             </Card>
-            <TableContainer component={Paper} sx={{ maxWidth: "95%", mt: 2 }}>
+            <TableContainer component={Paper} sx={{ width: "100%", mt: 2 }}>
               <Table aria-label="Winner details">
                 <TableBody>
                   <TableRow>
