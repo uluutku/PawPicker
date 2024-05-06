@@ -1,26 +1,21 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
 
 :root {
-    --background-color: #121212;
-    --text-color: #e0e0e0;
-    --primary-color: #bb86fc;
-    --error-color: #cf6679;
-    --card-background-color: #1e1e1e;
-    --button-color: #6200ee;
-    --button-hover-color: #7f39fb;
-    --border-color: #333;
-    --link-color: #8ab4f8;
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #bb86fc;
+  --error-color: #cf6679;
+  --card-background-color: #1e1e1e;
+  --button-color: #6200ee;
+  --button-hover-color: #7f39fb;
+  --border-color: #333;
+  --link-color: #8ab4f8;
 }
-
 
 body {
-    margin: 0;
-    font-family: 'Merriweather', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: all 0.33s ease;
+  margin: 0;
+  font-family: "Merriweather", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.33s ease;
 }
-
-
