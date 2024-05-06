@@ -117,7 +117,11 @@ export default function ABTest({ images, onComplete }) {
         <Typography variant="h5" sx={styles.testHeading}>
           Just select the better-looking one between two.
         </Typography>
-        <LinearProgress variant="determinate" sx={styles.progressBar} />
+        <LinearProgress
+          variant="determinate"
+          sx={styles.progressBar}
+          value={progress}
+        />
         <Grid container spacing={2}>
           {currentPair.map((item, index) => (
             <Grid item xs={12} sm={6} key={index} sx={styles.gridItem}>

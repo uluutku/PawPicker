@@ -15,9 +15,9 @@ const styles = {
     borderRadius: "10px",
     width: "100%",
     minHeight: "80vh",
-    display: "flex", // Use Flexbox
-    flexDirection: "column", // Column layout
-    justifyContent: "space-between", // Push button to the bottom
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   titleText: {
     color: "#dddddd",
