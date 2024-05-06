@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Shadows+Into+Light&display=swap");
+
+.hero-main {
+  background-image: url("../assets/rabbitflix-landing-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 60px;
+  height: 95vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-cta-card {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  text-align: start;
+  margin-right: 60vw;
+  margin-bottom: 30vh;
+}
+
+.hero-cta-card-title-container {
+  display: block;
+  margin: 0px 20px;
+  padding: 0;
+}
+
+.hero-cta-card-title {
+  font-size: 6rem;
+  font-family: "Bebas Neue", sans-serif;
+  padding: 0px;
+  text-align: left;
+}
+
+.hero-cta-card-subtitle {
+  font-size: 2rem;
+  font-family: "Rowdies", sans-serif;
+  text-align: left;
+}
+
+.hero-cta-card-description {
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  max-width: 500px;
+  text-align: left;
+  font-family: "Rowdies", sans-serif;
+  font-weight: lighter;
+}
+
+.hero-cta-card-button-movie,
+.hero-cta-card-button-serie {
+  font-family: "Rowdies", sans-serif;
+  background-color: #f98f41;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 40%;
+  transition: all 0.3s ease;
+}
+
+.hero-cta-card-button-serie {
+  background-color: #e16d1b;
+  margin-left: 20px;
+}
+
+.hero-cta-card-button-movie:hover {
+  background-color: #d87631;
+  transform: scale(1.1);
+}
+
+.hero-cta-card-button-serie:hover {
+  background-color: #b05310;
+  transform: scale(1.1);
+}
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .hero-main {
+    background-image: url("../../assets/rabbitflix-landing-hero-mobile.jpg");
+  }
+
+  .hero-cta-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    margin: 0;
+    border-radius: 10px;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .hero-cta-card {
+    padding: 10px;
+  }
+
+  .hero-cta-card-title {
+    font-size: 5rem;
+  }
+
+  .hero-cta-card-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta-card-description {
+    font-size: 0.7rem;
+  }
+
+  .hero-cta-card-button-movie {
+    width: 80%;
+    margin-bottom: 3vh;
+  }
+
+  .hero-cta-card-button-serie {
+    width: 80%;
+    margin-bottom: 33vh;
+    margin-left: 0px;
+  }
+
+  .hero-cta-card-button-movie:hover {
+    scale: 1.1;
+  }
+}
