@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Typography } from "@mui/material";
 import UploadImages from "./UploadImages/UploadImages";
 import ABTest from "./ABTest/ABTest";
-import Report from "./Report";
+import Report from "./Report/Report";
 import "./App.css";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";

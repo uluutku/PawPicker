@@ -14,6 +14,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
+
 import Confetti from "react-confetti";
 
 export default function Report({ imageData, onReset }) {
@@ -33,7 +34,20 @@ export default function Report({ imageData, onReset }) {
   const winner = sortedData[0];
 
   return (
-    <Card className="report-container">
+    <Card
+      sx={{
+        mt: "10vh",
+        mb: "10vh",
+        bgcolor: "#162447", // Dark blue background
+        color: "#c9d1d9", // Light grey text
+        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.5)", // Enhanced shadow
+        borderRadius: "10px",
+        minWidth: "500px",
+        maxWidth: "95vw",
+        mx: "auto",
+        p: 1,
+      }}
+    >
       <CardContent>
         <Typography
           variant="h4"
@@ -71,7 +85,7 @@ export default function Report({ imageData, onReset }) {
                 component="img"
                 image={winner.url}
                 alt="Top Performer"
-                sx={{ width: "100%", maxHeight: 400, objectFit: "contain" }}
+                sx={{ width: "100%", maxHeight: 500, objectFit: "contain" }}
               />
               <CardContent>
                 <Typography>
@@ -80,7 +94,7 @@ export default function Report({ imageData, onReset }) {
                 </Typography>
               </CardContent>
             </Card>
-            <TableContainer component={Paper} sx={{ maxWidth: 600, mt: 2 }}>
+            <TableContainer component={Paper} sx={{ maxWidth: "80%", mt: 2 }}>
               <Table aria-label="Winner details">
                 <TableBody>
                   <TableRow>

@@ -108,7 +108,7 @@ export default function ABTest({ images, onComplete }) {
 
   const updateProgress = (pairsTested) => {
     const totalPairsPossible = (imageData.length * (imageData.length - 1)) / 2;
-    setProgress((pairsTested / totalPairsPossible) * 100);
+    setProgress((pairsTested / totalPairsPossible) * 60);
   };
 
   return (
@@ -122,6 +122,14 @@ export default function ABTest({ images, onComplete }) {
           sx={styles.progressBar}
           value={progress}
         />
+        {progress >= 100 && (
+          <div
+            style={{ color: "#ffffff", textAlign: "center", marginTop: "5px" }}
+          >
+            Enough data is collected, but keep voting more images. It will
+            refine results.
+          </div>
+        )}
         <Grid container spacing={2}>
           {currentPair.map((item, index) => (
             <Grid item xs={12} sm={6} key={index} sx={styles.gridItem}>
