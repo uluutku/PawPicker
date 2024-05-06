@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Typography } from '@mui/material';
 import UploadImages from './UploadImages';
 import ABTest from './ABTest';
