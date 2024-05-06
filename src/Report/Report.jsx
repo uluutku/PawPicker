@@ -42,9 +42,6 @@ export default function Report({ imageData, onReset }) {
         color: "#c9d1d9", // Light grey text
         boxShadow: "0 10px 20px rgba(0, 0, 0, 0.5)", // Enhanced shadow
         borderRadius: "10px",
-        minWidth: "500px",
-        maxWidth: "95vw",
-        mx: "auto",
         p: 1,
       }}
     >

@@ -108,12 +108,17 @@ a {
     display: block;
   }
 
+  .header {
+    padding: 0 10px;
+    height: 10vh;
+  }
+
   .menu {
     position: absolute;
-    top: 50px;
+    top: 10vh;
     left: 0;
     width: 100%;
-    background-color: #000;
+    background-color: #0a0a0a;
     padding: 20px;
     flex-direction: column;
     align-items: center;
