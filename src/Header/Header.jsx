@@ -29,7 +29,7 @@ function Header() {
       <div className="header" ref={headerRef}>
         <div className="logo-container">
           <Link to="/" className="logo-link">
-            <p className="logo-item">🐰 PawSelect</p>
+            <p className="logo-item">🐰 PawPicker</p>
           </Link>
         </div>
         <div className="menu-toggle" onClick={toggleMenu}>

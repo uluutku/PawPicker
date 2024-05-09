@@ -6,7 +6,7 @@ function LandingHero() {
     <div className="hero-main">
       <div className="hero-cta-card">
         <div className="hero-cta-card-title-container">
-          <h1 className="hero-cta-card-title">PawSelect</h1>
+          <h1 className="hero-cta-card-title">PawPicker</h1>
           <h2 className="hero-cta-card-subtitle">
             Choose Your Images with Magic
           </h2>
