@@ -8,6 +8,7 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import LandingHero from "./Hero/LandingHero";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -65,6 +66,7 @@ export default function App() {
               </div>
             }
           />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </div>
 

@@ -10,6 +10,7 @@ function Footer() {
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/tester">Magic Tester</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
         </div>
       </div>
       <div className="copyright-text">
